@@ -7,7 +7,7 @@ function HomeScreen({ navigation }) {
       <Text>Home Screen</Text>
       <Button
         title="Go to the Todo List"
-        onPress={() => navigation.navigate("Todo List")}
+        onPress={() => navigation.navigate("Tasks")}
       />
       <Button title="About" onPress={() => navigation.navigate("About")} />
     </View>
