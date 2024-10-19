@@ -1,6 +1,6 @@
 import { Text, View } from "react-native-web";
 import TodoList from "./components/TodoList";
-
+import "./global.css"
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./components/HomeScreen";

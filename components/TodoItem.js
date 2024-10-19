@@ -13,7 +13,11 @@ export default function TodoItem({ task, deleteTask, toggleCompleted }) {
       >
         {task.text}
       </Text>
-      <Button title="X" onPress={() => deleteTask(task.id)} />
+      <Button
+        style={{ $$css: true, _: 'w-1/2' }}
+        title="X"
+        onPress={() => deleteTask(task.id)}
+      />
     </View>
   );
 }

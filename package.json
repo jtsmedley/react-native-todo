@@ -13,7 +13,10 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "expo": "^51.0.38",
+    "expo-router": "^3.5.23",
     "expo-status-bar": "~1.12.1",
+    "metro-react-native-babel-preset": "^0.77.0",
+    "nativewind": "^4.1.17",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
@@ -22,7 +25,9 @@
     "react-native-web": "0.19.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "metro": "^0.81.0",
+    "metro-core": "^0.81.0"
   },
   "private": true
 }
