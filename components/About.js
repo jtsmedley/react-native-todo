@@ -9,8 +9,9 @@ function About({ navigation }) {
       </Text>
       <Button
         title="Go to the Todo List"
-        onPress={() => navigation.navigate("Todo List")}
+        onPress={() => navigation.navigate("Tasks")}
       />
+      <Button title="Return Home" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 }
