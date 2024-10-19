@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { View, TextInput, Button, Alert } from "react-native";
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ tasks, setTasks, toggleCompleted }) {
+export default function TodoList({
+  tasks,
+  setTasks,
+  toggleCompleted,
+  deleteTask,
+}) {
   const [text, setText] = useState("");
 
   // Function to Add Task
@@ -18,11 +23,6 @@ export default function TodoList({ tasks, setTasks, toggleCompleted }) {
     };
     setTasks([...tasks, newTask]);
     setText("");
-  }
-
-  // Function to Delete Task
-  function deleteTask(id) {
-    setTasks(tasks.filter((task) => task.id !== id));
   }
 
   // Filter active tasks

@@ -36,6 +36,11 @@ export default function App() {
     );
   }
 
+  // Function to Delete Task
+  function deleteTask(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -47,6 +52,7 @@ export default function App() {
               tasks={tasks}
               setTasks={setTasks}
               toggleCompleted={toggleCompleted}
+              deleteTask={deleteTask}
             />
           )}
         />

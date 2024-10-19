@@ -2,7 +2,12 @@ import React from "react";
 import { View, Text } from "react-native";
 import TodoItem from "./TodoItem";
 
-export default function CompletedTasks({ tasks, toggleCompleted, setTasks }) {
+export default function CompletedTasks({
+  tasks,
+  toggleCompleted,
+  setTasks,
+  deleteTask,
+}) {
   // Filter completed tasks
   const completedTasks = tasks.filter((task) => task.completed);
   // const completedTasks = [{ id: 0, toggleCompleted: () => {} }];
@@ -17,6 +22,7 @@ export default function CompletedTasks({ tasks, toggleCompleted, setTasks }) {
             task={task}
             setTasks={setTasks}
             toggleCompleted={toggleCompleted}
+            deleteTask={deleteTask}
           />
         ))
       ) : (

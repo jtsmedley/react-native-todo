@@ -5,7 +5,7 @@ import CompletedTasks from "./CompletedTasks";
 const Tab = createMaterialTopTabNavigator();
 
 // Tab Navigator for Tasks
-const TasksTabs = ({ tasks, setTasks, toggleCompleted }) => (
+const TasksTabs = ({ tasks, setTasks, toggleCompleted, deleteTask }) => (
   <Tab.Navigator>
     <Tab.Screen
       name="Active Tasks"
@@ -14,6 +14,7 @@ const TasksTabs = ({ tasks, setTasks, toggleCompleted }) => (
           tasks={tasks}
           setTasks={setTasks}
           toggleCompleted={toggleCompleted}
+          deleteTask={deleteTask}
         />
       )}
     />
@@ -24,6 +25,7 @@ const TasksTabs = ({ tasks, setTasks, toggleCompleted }) => (
           tasks={tasks}
           setTasks={setTasks}
           toggleCompleted={toggleCompleted}
+          deleteTask={deleteTask}
         />
       )}
     />
