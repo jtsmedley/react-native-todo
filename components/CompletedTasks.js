@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import TodoItem from "./TodoItem";
+import { styled } from "nativewind";
 
 export default function CompletedTasks({
   tasks,
@@ -12,6 +13,9 @@ export default function CompletedTasks({
   const completedTasks = tasks.filter((task) => task.completed);
   // const completedTasks = [{ id: 0, toggleCompleted: () => {} }];
   console.log({ tasks });
+
+  StyledText = styled(Text);
+  StyledView = styled(View);
 
   return (
     <View style={{ padding: 16 }}>
@@ -26,7 +30,7 @@ export default function CompletedTasks({
           />
         ))
       ) : (
-        <Text>No completed tasks</Text>
+        <Text className="bg-red-700">No completed tasks</Text>
       )}
     </View>
   );
