@@ -9,6 +9,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { Text } from "react-native";
 import { getTasks } from "../utilities/database-calls";
+import { StyleSheet } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
 
 const Stack = createStackNavigator();
 
@@ -45,6 +47,25 @@ const Home = () => {
 
   const [tasks, setTasks] = useState({ activeTasks: [], completedTasks: [] });
 
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Prevent the splash screen from auto-hiding
+        await SplashScreen.preventAutoHideAsync();
+
+        // Simulate some asynchronous task (e.g., loading fonts, fetching data)
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Example: wait for 2 seconds
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Hide the splash screen after the task is complete
+        await SplashScreen.hideAsync();
+      }
+    }
+
+    prepare();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeScreen">
@@ -77,5 +98,13 @@ const Home = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default Home;

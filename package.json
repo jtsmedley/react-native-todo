@@ -20,6 +20,8 @@
     "auth0": "^4.10.0",
     "dotenv": "^16.4.5",
     "expo": "^51.0.38",
+    "expo-font": "~12.0.10",
+    "expo-splash-screen": "~0.27.6",
     "expo-status-bar": "~1.12.1",
     "express": "^4.21.1",
     "express-session": "^1.18.1",
