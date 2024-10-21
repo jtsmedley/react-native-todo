@@ -10,6 +10,7 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate("Tasks")}
       />
       <Button title="About" onPress={() => navigation.navigate("About")} />
+      <Button title="Profile" onPress={() => navigation.navigate("Profile")} />
     </View>
   );
 }

@@ -11,7 +11,11 @@ function About({ navigation }) {
         title="Go to the Todo List"
         onPress={() => navigation.navigate("Tasks")}
       />
-      <Button title="Return Home" onPress={() => navigation.navigate("Home")} />
+      <Button
+        title="Return Home"
+        onPress={() => navigation.navigate("HomeScreen")}
+      />
+      <Button title="Profile" onPress={() => navigation.navigate("Profile")} />
     </View>
   );
 }
