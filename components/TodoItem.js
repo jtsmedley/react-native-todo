@@ -1,8 +1,20 @@
 import React from "react";
 import { View, Text, Button, CheckBox } from "react-native";
 import { StyleSheet } from "react-native";
+import { deleteTask, toggleCompleted } from "../utilities/database-calls";
 
-export default function TodoItem({ task, deleteTask, toggleCompleted }) {
+export default function TodoItem({ task, user, getTasksBackend }) {
+  const handleDeleteTask = async (user, id) => {
+    await deleteTask(user, id);
+    console.log("calling getTasksBackend()");
+    getTasksBackend();
+  };
+
+  const handleToggleCompleted = async (user, id) => {
+    await toggleCompleted(user, id);
+    console.log("calling getTasksBackend()");
+    getTasksBackend();
+  };
   return (
     <View style={styles.vertical}>
       <View style={styles.container}>
@@ -16,22 +28,27 @@ export default function TodoItem({ task, deleteTask, toggleCompleted }) {
         <View style={styles.buttonContainer}>
           <Button
             title={task.completed ? "←" : "✓"}
-            onPress={() => toggleCompleted(task.id)}
+            onPress={() => {
+              console.log({ user });
+              handleToggleCompleted(user, task.id);
+            }}
             color={task.completed ? "" : "green"}
           />
 
           <Button
             title="x"
-            onPress={() => deleteTask(task.id)}
+            onPress={() => handleDeleteTask(user, task.id)}
             color="red" // Set the button color to red
           />
         </View>
       </View>
       <Text style={styles.createdAtText}>
+        {/* Created: {new Date(task.createdAt).toLocaleString()} */}
         Created: {new Date(task.createdAt).toLocaleString()}
       </Text>
-      {task.completed && (
+      {task.completedAt && (
         <Text style={styles.createdAtText}>
+          {/* Completed: {new Date(task.completedAt).toLocaleString()} */}
           Completed: {new Date(task.completedAt).toLocaleString()}
         </Text>
       )}

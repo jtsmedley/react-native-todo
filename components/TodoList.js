@@ -1,44 +1,45 @@
-import React, { useState } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, TextInput, Button, Text } from "react-native";
 import TodoItem from "./TodoItem";
+import axios from "axios";
+import { addTaskBackend } from "../utilities/database-calls";
 
 export default function TodoList({
   tasks,
   setTasks,
-  toggleCompleted,
-  deleteTask,
+  user,
+  isAuthenticated,
+  getTasksBackend,
 }) {
   const [text, setText] = useState("");
 
-  // Function to Add Task
-  function addTask() {
-    const currentTime = Date.now();
-    console.log(currentTime);
-    const newTask = {
-      id: Date.now(),
-      text,
-      completed: false,
-      createdAt: currentTime,
-      completedAt: 0,
-    };
-    setTasks([...tasks, newTask]);
-    setText("");
-  }
+  const addTask = async () => {
+    try {
+      const newTaskAdded = await addTaskBackend(user, text); // Await the result of the async function
+      if (!newTaskAdded) return;
+      getTasksBackend();
 
-  // Filter active tasks
-  const activeTasks = tasks.filter((task) => !task.completed);
+      setText(""); // Reset the text input
+    } catch (error) {
+      console.error("Error adding task", error);
+    }
+  };
 
   return (
     <View style={{ flex: 1, padding: 16, justifyContent: "flex-end" }}>
       <View style={{ flex: 1 }}>
-        {activeTasks.map((task) => (
-          <TodoItem
-            key={task.id}
-            task={task}
-            deleteTask={deleteTask}
-            toggleCompleted={toggleCompleted}
-          />
-        ))}
+        {tasks.activeTasks.length > 0 ? (
+          tasks.activeTasks.map((task) => (
+            <TodoItem
+              key={task.id}
+              task={task}
+              user={user}
+              getTasksBackend={getTasksBackend}
+            />
+          ))
+        ) : (
+          <Text>No active tasks</Text>
+        )}
       </View>
       <TextInput
         value={text}
